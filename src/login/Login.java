@@ -1,5 +1,6 @@
 package login;
 
+import basedatos.BaseDatos;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -16,9 +17,13 @@ public class Login extends Application {
     public void start(Stage ventana) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("/vista/VLogin.fxml"));
 
+        Scene escena = new Scene(root, 612, 400);
+
         ventana.setTitle("JavaFX01");
-        ventana.setScene(new Scene(root, 612, 400));
+        ventana.setScene(escena);
         ventana.show();
+
+        BaseDatos.cargarDatos();
     }
 
 }

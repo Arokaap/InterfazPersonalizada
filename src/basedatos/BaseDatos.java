@@ -1,12 +1,12 @@
 package basedatos;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.HashMap;
+import java.util.Scanner;
 import javafx.scene.control.Alert;
 
 public class BaseDatos {
@@ -22,38 +22,45 @@ public class BaseDatos {
 
     public static void aniadirUsuario(String usuario, String contrasenia) {
         try {
-            FileWriter insertador = new FileWriter("Datos_Usuarios.txt");
-            BufferedWriter buffer = new BufferedWriter(insertador);
+            FileWriter insertador = new FileWriter("src\\basedatos\\Datos_Usuarios.txt", true);
+            PrintWriter escribiendo = new PrintWriter(insertador);
 
-            buffer.write(usuario);
-            buffer.write(contrasenia);
+            escribiendo.write(usuario + "\n");
+            escribiendo.write(contrasenia + "\n");
 
+            insertador.close();
+            insertador.close();
         } catch (IOException ex) {
             Alert error = new Alert(Alert.AlertType.ERROR);
             error.setHeaderText("Error en el inicio de sesion");
             error.setContentText("El usuario o contraseña es incorrecto");
         }
+        cargarDatos();
     }
 
     public static void cargarDatos() {
+
         try {
+            String usuario, contrasenia;
+            File archivo = new File("src\\basedatos\\Datos_Usuarios.txt");
+            Scanner entrada = null;
 
-            FileReader lector = new FileReader("Datos_Usuarios.txt");
-            BufferedReader buffer = new BufferedReader(lector);
+            entrada = new Scanner(archivo);
 
-            String usuario = buffer.readLine();
-            String contrasenia = buffer.readLine();
-            while (usuario != null || contrasenia != null) {
+            while (entrada.hasNext()) {
+                usuario = entrada.next();
+                contrasenia = entrada.next();
+
                 usuarios.put(usuario, contrasenia);
-
-                usuario = buffer.readLine();
-                contrasenia = buffer.readLine();
             }
+
+            entrada.close();
 
         } catch (FileNotFoundException ex) {
             Alert error = new Alert(Alert.AlertType.ERROR);
             error.setHeaderText("No se cargaron correctamente los datos");
             error.setContentText("Los datos de los usuarios no se han cargado de la forma debida");
+            error.show();
         } catch (IOException ex) {
             Alert error = new Alert(Alert.AlertType.ERROR);
             error.setHeaderText("No se cargaron correctamente los datos");
@@ -61,4 +68,7 @@ public class BaseDatos {
         }
     }
 
+    public static boolean estaRegistrado(String usuario) {
+        return (usuarios.containsKey(usuario));
+    }
 }
