@@ -5,6 +5,9 @@
         <group>
             <file>file:/C:/Users/USUARIO/Desktop/Grado%20Superior/Programacion/Tema9/CursoJavaFX/login/src/login/Login.java</file>
             <file>file:/C:/Users/USUARIO/Desktop/Grado%20Superior/Programacion/Tema9/CursoJavaFX/login/src/vista/VLoginController.java</file>
+            <file>file:/C:/Users/USUARIO/Desktop/Grado%20Superior/Programacion/Tema9/CursoJavaFX/login/src/vista/VRegistro.fxml</file>
+            <file>file:/C:/Users/USUARIO/Desktop/Grado%20Superior/Programacion/Tema9/CursoJavaFX/login/src/vista/VRegistroController.java</file>
+            <file>file:/C:/Users/USUARIO/Desktop/Grado%20Superior/Programacion/Tema9/CursoJavaFX/login/src/basedatos/Datos_Usuarios.txt</file>
             <file>file:/C:/Users/USUARIO/Desktop/Grado%20Superior/Programacion/Tema9/CursoJavaFX/login/src/vista/VLogin.fxml</file>
             <file>file:/C:/Users/USUARIO/Desktop/Grado%20Superior/Programacion/Tema9/CursoJavaFX/login/src/basedatos/BaseDatos.java</file>
         </group>
