@@ -6,6 +6,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 import javafx.scene.control.Alert;
 
@@ -70,5 +71,17 @@ public class BaseDatos {
 
     public static boolean estaRegistrado(String usuario) {
         return (usuarios.containsKey(usuario));
+    }
+
+    public static boolean loginCorrecto(String usuario, String contrasenia) {
+        boolean esCorrecto = false;
+
+        for (Map.Entry<String, String> entry : usuarios.entrySet()) {
+            if (entry.getKey().equals(usuario) && entry.getValue().equals(contrasenia)) {
+                esCorrecto = true;
+            }
+        }
+
+        return esCorrecto;
     }
 }

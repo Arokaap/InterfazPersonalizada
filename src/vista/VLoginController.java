@@ -42,9 +42,12 @@ public class VLoginController implements Initializable {
         if (lbUsuario.getText().equalsIgnoreCase("") || lbContrasenia.getText().equalsIgnoreCase("")) {
             lbRegistroExitoso.setText("");
             lbErrorLogin.setText("Faltan datos por rellenar");
-        } else if (BaseDatos.estaRegistrado(lbUsuario.getText())) {
+        } else if (BaseDatos.loginCorrecto(lbUsuario.getText(), lbContrasenia.getText())) {
+            lbRegistroExitoso.setText("Accediendo...");
+            lbErrorLogin.setText("");
+        } else{
             lbRegistroExitoso.setText("");
-            lbErrorLogin.setText("Este usuario ya está registrado");
+            lbErrorLogin.setText("Usuario o contraseña incorrecto!");
         }
     }
 

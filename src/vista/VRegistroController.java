@@ -57,11 +57,15 @@ public class VRegistroController implements Initializable {
         } else if (BaseDatos.estaRegistrado(lbUsuario.getText())) {
             lbRegistroExitoso.setText("");
             lbErrorLogin.setText("Este usuario ya está registrado");
-        } else {
-            BaseDatos.aniadirUsuario(lbUsuario.getText(), lbContrasenia.getText());
-            lbErrorLogin.setText("");
-            lbRegistroExitoso.setText("Usuario Registrado Correctamente");
-
+        } else if(lbContrasenia.getText().equals(lbConfirmar.getText())){
+            if (true) {
+                BaseDatos.aniadirUsuario(lbUsuario.getText(), lbContrasenia.getText());
+                lbErrorLogin.setText("");
+                lbRegistroExitoso.setText("Usuario Registrado Correctamente");
+            }
+        }else{
+            lbRegistroExitoso.setText("");
+            lbErrorLogin.setText("La contraseña no coincide");
         }
 
         lbUsuario.setText("");
