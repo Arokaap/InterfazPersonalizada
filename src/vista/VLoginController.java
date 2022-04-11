@@ -39,7 +39,13 @@ public class VLoginController implements Initializable {
 
     @FXML
     private void userLogin(MouseEvent event) {
-
+        if (lbUsuario.getText().equalsIgnoreCase("") || lbContrasenia.getText().equalsIgnoreCase("")) {
+            lbRegistroExitoso.setText("");
+            lbErrorLogin.setText("Faltan datos por rellenar");
+        } else if (BaseDatos.estaRegistrado(lbUsuario.getText())) {
+            lbRegistroExitoso.setText("");
+            lbErrorLogin.setText("Este usuario ya está registrado");
+        }
     }
 
     @FXML
@@ -50,19 +56,7 @@ public class VLoginController implements Initializable {
         } catch (IOException ex) {
             Alert alerta = new Alert(Alert.AlertType.ERROR);
         }
-        if (lbUsuario.getText().equalsIgnoreCase("") || lbContrasenia.getText().equalsIgnoreCase("")) {
-            lbRegistroExitoso.setText("");
-        } else if (BaseDatos.estaRegistrado(lbUsuario.getText())) {
-            lbRegistroExitoso.setText("");
-            lbErrorLogin.setText("Este usuario ya está registrado");
-        } else {
-            BaseDatos.aniadirUsuario(lbUsuario.getText(), lbContrasenia.getText());
-            lbErrorLogin.setText("");
-            lbRegistroExitoso.setText("Usuario Registrado");
-        }
 
-        lbUsuario.setText("");
-        lbContrasenia.setText("");
     }
 
     @FXML

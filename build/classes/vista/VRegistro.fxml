@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -32,7 +33,7 @@
                   <Image url="@../img/candado.png" />
                </image>
             </ImageView>
-            <TextField fx:id="lbUsuario" layoutX="114.0" layoutY="188.0" promptText="Usuario" />
+            <TextField fx:id="lbUsuario" layoutX="114.0" layoutY="188.0" onKeyPressed="#espacioPulsado" promptText="Usuario" />
             <Label layoutX="28.0" layoutY="189.0" prefHeight="22.0" prefWidth="66.0" text="Usuario">
                <textFill>
                   <LinearGradient endX="1.0" endY="1.0">
@@ -117,8 +118,6 @@
                   <Font name="Arial Bold" size="17.0" />
                </font>
             </Label>
-            <TextField fx:id="lbContrasenia" layoutX="114.0" layoutY="237.0" promptText="Contraseña" />
-            <TextField fx:id="lbConfirmar" layoutX="114.0" layoutY="299.0" promptText="Confirmar contraseña" />
             <ImageView fx:id="imgVolver" fitHeight="52.0" fitWidth="63.0" layoutX="9.0" layoutY="15.0" onMouseClicked="#volverAtras" pickOnBounds="true" preserveRatio="true" rotate="-180.0">
                <image>
                   <Image url="@../img/flecha_atras.png" />
@@ -129,6 +128,18 @@
                   <Font name="Arial Bold" size="15.0" />
                </font>
             </Button>
+            <Label fx:id="lbErrorLogin" layoutX="109.0" layoutY="157.0" prefHeight="18.0" prefWidth="178.0" textFill="RED">
+               <font>
+                  <Font name="Arial Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="lbRegistroExitoso" layoutX="86.0" layoutY="157.0" prefHeight="18.0" prefWidth="207.0" textFill="#0cdf28">
+               <font>
+                  <Font name="Arial Bold" size="12.0" />
+               </font>
+            </Label>
+            <PasswordField fx:id="lbConfirmar" layoutX="114.0" layoutY="297.0" onKeyPressed="#espacioPulsado" promptText="Confirmar Contraseña" />
+            <PasswordField fx:id="lbContrasenia" layoutX="115.0" layoutY="237.0" onKeyPressed="#espacioPulsado" promptText="Contraseña" />
          </children>
       </AnchorPane>
    </left>
